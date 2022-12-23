@@ -2,6 +2,7 @@ package com.bio;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,7 +23,7 @@ public class Bio extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		
 		String name = request.getParameter("name");
@@ -59,8 +60,29 @@ public class Bio extends HttpServlet {
 		pw.println("</td>");
 		pw.println("</tr>");
 		
+		pw.println("<a href= 'Bio2'>");
+		pw.println("Gateway to bio2" );
+		pw.println("</a>");
+		
+		
+		  Cookie c = new Cookie("name", name);
+		  
+		  response.addCookie(c);
+		 
+		
 		
 		
 	}
 
+	/*
+	 * protected void doGet(HttpServletRequest request, HttpServletResponse
+	 * response) throws ServletException, IOException {
+	 * 
+	 * doPost(request, response);
+	 * 
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 }
